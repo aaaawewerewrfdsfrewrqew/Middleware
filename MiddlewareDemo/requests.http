@@ -1,0 +1,16 @@
+@host = http://localhost:5080
+
+### Без ключа -> 401
+GET {{host}}/api/products
+
+### Невірний ключ -> 401
+GET {{host}}/api/products
+X-API-KEY: wrong-key
+
+### Правильний ключ -> 200
+GET {{host}}/api/products
+X-API-KEY: super-secret-key-123
+
+### Health
+GET {{host}}/api/health
+X-API-KEY: super-secret-key-123
